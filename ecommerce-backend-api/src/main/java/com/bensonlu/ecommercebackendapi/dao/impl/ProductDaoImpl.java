@@ -30,7 +30,7 @@ public class ProductDaoImpl implements ProductDao {
                 "FROM product WHERE 1=1";
 
         Map<String, Object> map=new HashMap<>();
-
+        //conditional query
         if (productQueryParams.getCategory()!=null){
             sql=sql+" AND category=:category";
             map.put("category",productQueryParams.getCategory().name());
@@ -40,8 +40,16 @@ public class ProductDaoImpl implements ProductDao {
             sql=sql+" AND product_name Like :search";
             map.put("search","%"+productQueryParams.getSearch()+"%");
         }
+        //sorting
         //no need null check (bc default value)
         sql=sql+" ORDER BY "+productQueryParams.getOrderBy()+" "+productQueryParams.getSort();
+
+        //paging
+        sql=sql+" LIMIT :limit OFFSET :offset";
+        map.put("limit",productQueryParams.getLimit());
+        map.put("offset",productQueryParams.getOffset());
+
+
 
         List<Product> productList=namedParameterJdbcTemplate.query(sql,map,new ProductRowMapper());
 
