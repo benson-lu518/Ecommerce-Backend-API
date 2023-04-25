@@ -1,10 +1,17 @@
 package com.bensonlu.ecommercebackendapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class User {
     private Integer userId;
+
+    @JsonProperty("e_mail") //change the key name to e_mail
     private String email;
+
+    @JsonIgnore //when transfer User object to Json password will be ignored
     private String password;
     private Date createdDate;
     private Date lassModifiedDate;
