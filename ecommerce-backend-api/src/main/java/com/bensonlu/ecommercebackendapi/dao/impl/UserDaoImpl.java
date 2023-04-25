@@ -2,9 +2,7 @@ package com.bensonlu.ecommercebackendapi.dao.impl;
 
 import com.bensonlu.ecommercebackendapi.dao.UserDao;
 import com.bensonlu.ecommercebackendapi.dto.UserRegisterRequest;
-import com.bensonlu.ecommercebackendapi.model.Product;
 import com.bensonlu.ecommercebackendapi.model.User;
-import com.bensonlu.ecommercebackendapi.rowmapper.ProductRowMapper;
 import com.bensonlu.ecommercebackendapi.rowmapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

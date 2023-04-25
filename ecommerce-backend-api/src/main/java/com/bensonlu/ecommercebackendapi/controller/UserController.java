@@ -1,5 +1,6 @@
 package com.bensonlu.ecommercebackendapi.controller;
 
+import com.bensonlu.ecommercebackendapi.dto.UserLoginRequest;
 import com.bensonlu.ecommercebackendapi.dto.UserRegisterRequest;
 import com.bensonlu.ecommercebackendapi.model.User;
 import com.bensonlu.ecommercebackendapi.service.UserService;
@@ -22,5 +23,12 @@ public class UserController {
         User user=userService.getUserById(userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
 
+    }
+
+    @PostMapping("/users/login")
+    public ResponseEntity<User>login(@RequestBody @Valid UserLoginRequest userLoginRequest){
+        User user=userService.login(userLoginRequest);
+
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 }

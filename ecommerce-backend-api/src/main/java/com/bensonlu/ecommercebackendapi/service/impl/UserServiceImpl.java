@@ -1,6 +1,7 @@
 package com.bensonlu.ecommercebackendapi.service.impl;
 
 import com.bensonlu.ecommercebackendapi.dao.UserDao;
+import com.bensonlu.ecommercebackendapi.dto.UserLoginRequest;
 import com.bensonlu.ecommercebackendapi.dto.UserRegisterRequest;
 import com.bensonlu.ecommercebackendapi.model.User;
 import com.bensonlu.ecommercebackendapi.service.UserService;
@@ -40,4 +41,22 @@ public class UserServiceImpl implements UserService {
         return userDao.createUser(userRegisterRequest);
     }
 
+    @Override //check the input if same as the database
+    public User login(UserLoginRequest userLoginRequest) {
+        User user=userDao.getUserByEmail(userLoginRequest.getEmail());
+
+        if (user==null){
+            log.warn("the email {} has not been registerd",userLoginRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+
+        if(user.getPassword().equals(userLoginRequest.getPassword())){
+            return user;
+        }else{
+            log.warn("email {} 's password is not correct",userLoginRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+    }
 }
