@@ -5,6 +5,7 @@ import com.bensonlu.ecommercebackendapi.dto.ProductQueryParams;
 import com.bensonlu.ecommercebackendapi.dto.ProductRequest;
 import com.bensonlu.ecommercebackendapi.model.Product;
 import com.bensonlu.ecommercebackendapi.service.ProductService;
+import com.bensonlu.ecommercebackendapi.util.Page;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -23,7 +24,7 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>>getProducts(
+    public ResponseEntity<Page<Product>>getProducts(
             //conditional filtering
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search,
@@ -42,9 +43,20 @@ public class ProductController {
         productQueryParams.setSort(sort);
         productQueryParams.setLimit(limit);
         productQueryParams.setOffset(offset);
-
+        //get product list
         List<Product> productList=productService.getProducts(productQueryParams);
-        return ResponseEntity.status(HttpStatus.OK).body(productList);
+        //get total products num
+        Integer total=productService.countProduct(productQueryParams);
+
+        //paging
+        Page<Product> page=new Page<>();
+        page.setLimit(limit);
+        page.setOffset(offset);
+        page.setTotal(total);
+        page.setResults(productList);
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 
 
