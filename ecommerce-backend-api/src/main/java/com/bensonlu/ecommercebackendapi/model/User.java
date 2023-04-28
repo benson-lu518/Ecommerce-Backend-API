@@ -8,13 +8,13 @@ import java.util.Date;
 public class User {
     private Integer userId;
 
-    @JsonProperty("e_mail") //change the key name to e_mail
+    //@JsonProperty("e_mail") //change the key name to e_mail
     private String email;
 
     @JsonIgnore //when transfer User object to Json password will be ignored
     private String password;
     private Date createdDate;
-    private Date lassModifiedDate;
+    private Date lastModifiedDate;
 
     public Integer getUserId() {
         return userId;
@@ -48,11 +48,11 @@ public class User {
         this.createdDate = createdDate;
     }
 
-    public Date getLassModifiedDate() {
-        return lassModifiedDate;
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setLassModifiedDate(Date lassModifiedDate) {
-        this.lassModifiedDate = lassModifiedDate;
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }
