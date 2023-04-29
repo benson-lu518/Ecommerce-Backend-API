@@ -4,6 +4,7 @@ import com.bensonlu.ecommercebackendapi.dao.OrderDao;
 import com.bensonlu.ecommercebackendapi.dao.ProductDao;
 import com.bensonlu.ecommercebackendapi.dto.BuyItem;
 import com.bensonlu.ecommercebackendapi.dto.CreateOrderRequest;
+import com.bensonlu.ecommercebackendapi.model.Order;
 import com.bensonlu.ecommercebackendapi.model.OrderItem;
 import com.bensonlu.ecommercebackendapi.model.Product;
 import com.bensonlu.ecommercebackendapi.service.OrderService;
@@ -23,6 +24,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductDao productDao;
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+        Order order =orderDao.getOrderById(orderId);
+
+        List<OrderItem> orderItemList=orderDao.getOrderItemsByOrderId(orderId);
+
+        order.setOrderItemList(orderItemList); //add order information into order
+
+        return order;
+    }
 
     @Transactional  //will rollback if throw exception
     @Override
