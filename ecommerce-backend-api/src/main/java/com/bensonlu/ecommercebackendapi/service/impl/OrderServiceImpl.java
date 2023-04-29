@@ -5,6 +5,7 @@ import com.bensonlu.ecommercebackendapi.dao.ProductDao;
 import com.bensonlu.ecommercebackendapi.dao.UserDao;
 import com.bensonlu.ecommercebackendapi.dto.BuyItem;
 import com.bensonlu.ecommercebackendapi.dto.CreateOrderRequest;
+import com.bensonlu.ecommercebackendapi.dto.OrderQueryParams;
 import com.bensonlu.ecommercebackendapi.model.Order;
 import com.bensonlu.ecommercebackendapi.model.OrderItem;
 import com.bensonlu.ecommercebackendapi.model.Product;
@@ -35,6 +36,27 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private UserDao userDao;
+
+    @Override
+    public Integer countOrder(OrderQueryParams orderQueryParams) {
+        return orderDao.countOrder(orderQueryParams);
+    }
+
+    @Override
+    public List<Order> getOrders(OrderQueryParams orderQueryParams) {
+        List<Order> orderList=orderDao.getOrders(orderQueryParams);
+
+        for(Order order : orderList){
+            List<OrderItem> orderItemList=orderDao.getOrderItemsByOrderId(order.getOrderId());
+            //get orderitems info
+
+            order.setOrderItemList(orderItemList);
+            return orderList;
+        }
+
+
+        return null;
+    }
 
     @Override
     public Order getOrderById(Integer orderId) {
