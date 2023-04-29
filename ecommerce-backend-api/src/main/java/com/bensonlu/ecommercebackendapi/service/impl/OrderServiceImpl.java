@@ -51,11 +51,10 @@ public class OrderServiceImpl implements OrderService {
             //get orderitems info
 
             order.setOrderItemList(orderItemList);
-            return orderList;
         }
 
+        return orderList;
 
-        return null;
     }
 
     @Override
