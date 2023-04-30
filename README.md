@@ -23,7 +23,7 @@
 ## Database (MySQL)(JDBC)
 ### Table
 ### product 
-| field name | data type |
+| column name | data type |
 |:--------:|:--------:|
 | product_id | INT |
 |product_name|VARCHAR(128)|
@@ -36,7 +36,7 @@
 |last_modified_date|TIMESTAMP|
 
 ### user
-| field name | data type |
+| column name | data type |
 |:--------:|:--------:|
 |user_id|INT|
 |email|VARCHAR(256)|
@@ -45,7 +45,7 @@
 |last_modified_date|TIMESTAMP|
  
 ### order
-| field name | data type |
+| column name | data type |
 |:--------:|:--------:|
 |order_id|INT|
 |user_id|INT|
