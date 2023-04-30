@@ -2,7 +2,7 @@
 
 ## Framework
 
-![ecommercebackendapi drawio](https://user-images.githubusercontent.com/78866239/235349902-801acd55-4cae-4154-baa6-ae73fe489faf.png)
+![ecommercebackendapi drawio](https://user-images.githubusercontent.com/78866239/235349955-0e1789a8-1d58-45da-83dc-378f37daabb0.png)
 
 ## Product
 - Query product lists
