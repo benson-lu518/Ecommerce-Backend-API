@@ -1,0 +1,177 @@
+Request Examples
+
+Product:
+1. createProduct,(METHOD: POST)
+  
+  http://localhost:8081/products
+  Request:
+  {
+    "productName":"Audi",
+    "category":"CAR",
+    "imageUrl":"https://unsplash.com/photos/m3m-lnR90uM",
+    "price":35000,
+    "stock":5
+  }
+  Return:
+  {
+    "productId": 15,
+    "productName": "Audi",
+    "category": "CAR",
+    "imageUrl": "https://unsplash.com/photos/m3m-lnR90uM",
+    "price": 35000,
+    "stock": 5,
+    "description": null,
+    "createdDate": "2023-04-30 18:01:03",
+    "lastModifiedDate": "2023-04-30 18:01:03"
+  }
+  
+2. getProducts, (METHOD: GET) 
+  
+  http://localhost:8081/products?limit=5&offset=2 
+  Return:
+  {
+    "limit": 5,
+    "offset": 2,
+    "total": 7,
+    "results":[
+      {"productId": 12, "productName": "BMW", "category": "CAR", "imageUrl": "https://cdn.pixabay.com/photo/2018/02/21/03/15/bmw-m4-3169357_1280.jpg",…},
+      {"productId": 11, "productName": "Toyota", "category": "CAR", "imageUrl": "https://cdn.pixabay.com/photo/2014/05/18/19/13/toyota-347288_1280.jpg",…},
+      {"productId": 10, "productName": "Banana", "category": "FOOD", "imageUrl": "https://cdn.pixabay.com/photo/2021/07/30/04/17/orange-6508617_1280.jpg",…},
+      {"productId": 9, "productName": "Apple", "category": "FOOD", "imageUrl": "https://cdn.pixabay.com/photo/2017/09/26/13/42/apple-2788662_1280.jpg",…},
+      {"productId": 8, "productName": "Orange", "category": "FOOD", "imageUrl": "https://cdn.pixabay.com/photo/2016/11/30/15/00/apples-1872997_1280.jpg",…}
+    ]
+  }
+
+  http://localhost:8081/products?category=CAR&search=B
+  Return:
+  {
+    "limit": 5,
+    "offset": 0,
+    "total": 2,
+    "results":[
+      {"productId": 13, "productName": "Benz", "category": "CAR", "imageUrl": "https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_1280.jpg",…},
+      {"productId": 12, "productName": "BMW", "category": "CAR", "imageUrl": "https://cdn.pixabay.com/photo/2018/02/21/03/15/bmw-m4-3169357_1280.jpg",…}
+    ]
+  }
+
+3. getProduct, (METHOD: GET)
+  
+  http://localhost:8081/products/8
+  Return:
+  {
+    "productId": 8,
+    "productName": "Orange",
+    "category": "FOOD",
+    "imageUrl": "https://cdn.pixabay.com/photo/2016/11/30/15/00/apples-1872997_1280.jpg",
+    "price": 30,
+    "stock": 10,
+    "description": "This is from Australia",
+    "createdDate": "2022-03-19 17:00:00",
+    "lastModifiedDate": "2022-03-22 18:00:00"
+  }
+
+4. updateProduct, (METHOD: PUT)
+
+  http://localhost:8081/products/11
+  Request:
+  {
+    "productName":"Toyota(Modified)",
+    "category":"CAR",
+    "imageUrl":"https://unsplash.com/photos/m3m-lnR90uM",
+    "price":1000,
+    "stock":5
+  }
+  Return:
+  {
+    "productId": 11,
+    "productName": "Toyota(Modified)",
+    "category": "CAR",
+    "imageUrl": "https://unsplash.com/photos/m3m-lnR90uM",
+    "price": 1000,
+    "stock": 5,
+    "description": null,
+    "createdDate": "2022-03-20 09:20:00",
+    "lastModifiedDate": "2023-04-30 18:13:01"
+  }
+
+5. deleteProdcut, (METHOD: DELETE)
+
+  http://localhost:8081/products/15
+  
+User:
+1. register, (METHOD:POST)
+
+  http://localhost:8081/users/register
+  Request:
+  {
+    "email":"test9@gamil.com",
+    "password":"123"
+  }
+  Return:
+  {
+    "userId": 10,
+    "email": "test9@gamil.com",
+    "createdDate": "2023-04-30 18:24:55",
+    "lastModifiedDate": "2023-04-30 18:24:55"
+  }
+
+2. login, (METHOD:POST)
+
+  http://localhost:8081/users/login
+  Request:
+  {
+    "email":"test6@gamil.com",
+    "password":"123"
+  }
+  Return:
+  {
+    "userId": 6,
+    "email": "test6@gamil.com",
+    "createdDate": "2023-04-28 15:55:03",
+    "lastModifiedDate": "2023-04-28 15:55:03"
+  }
+  
+Order:
+
+1. createOrder, (METHOD: POST)
+
+  http://localhost:8081/users/10/orders
+  Request:
+  {
+    "buyItemList":[
+      {
+        "productId":9,
+        "quantity":1
+      },
+      {
+        "productId":10,
+        "quantity":2
+      }
+    ]
+  }
+  Return:
+  {
+    "orderId": 14,
+    "userId": 10,
+    "totalAmount": 320,
+    "createdDate": "2023-04-30 19:07:08",
+    "lastModifiedDate": "2023-04-30 19:07:08",
+    "orderItemList":[
+      {"orderItemId": 28, "orderId": 14, "productId": 9, "quantity": 1, "amount": 300,…},
+      {"orderItemId": 29, "orderId": 14, "productId": 10, "quantity": 2, "amount": 20,…}
+    ]
+  }
+
+
+2. getOrders, (METHOD: GET)
+
+  http://localhost:8081/users/6/orders
+  Return:
+  {
+  "limit": 10,
+  "offset": 0,
+  "total": 1,
+  "results":[
+    {"orderId": 14, "userId": 10, "totalAmount": 320, "createdDate": "2023-04-30 19:07:08",…}
+  ]
+  }
