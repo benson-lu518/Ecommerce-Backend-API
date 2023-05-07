@@ -1,4 +1,4 @@
-# Ecommerce-Backend-API-Service
+# Ecommerce-Backend-API-Services
 
 ## About
 Use Java Spring Boot to build e-commerce backend API services and provide CRUD, product, item, user, log-in, register, etc.  
