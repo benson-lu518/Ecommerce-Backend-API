@@ -1,7 +1,7 @@
 # Ecommerce-Backend-API-Services
 
 ## About
-Use Java Spring Boot to build e-commerce backend API services and provide CRUD, product, item, user, log-in, register, etc.  
+Used Java Spring Boot to build e-commerce backend API services and provide CRUD, product, item, user, log-in, register, etc.  
 Skills: JAVA, Spring Boot, JDBC, H2, JUnit, MySQL, REST API, intelliJ IDEA
 ## Framework
 
