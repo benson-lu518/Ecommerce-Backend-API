@@ -12,11 +12,11 @@ Skills: JAVA, Spring Boot, JDBC, H2, JUnit, MySQL, REST API, intelliJ IDEA
 (1.	Get the request from the client and variables from the request body  
 (2.	Set the variables to dto (stores necessary variables for dao(SQL))  
 (3.	Pass dto to Service  
-In Service, It may have some business logic (conditional expression, calculation, check etc.)  
+&nbsp;&nbsp;In Service, It may have some business logic (conditional expression, calculation, check etc.)  
 (4.	Pass dto or other variables to dao  
 (5.	Dao implements the SQL execution     
-If it returns multiple rows then use rowmapper to turn Result into model.object    
-Then pass to namedParameterJdbcTemplate and return the List  
+&nbsp;&nbsp;If it returns multiple rows then use rowmapper to turn Result into model.object    
+&nbsp;&nbsp;Then pass to namedParameterJdbcTemplate and return the List  
 (6.	(if needed) Set the List to Page  
 (7.	Return ResponseEntity.status(HttpStatus.OK).body() to the Frontend  
 
