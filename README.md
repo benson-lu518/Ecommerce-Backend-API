@@ -8,17 +8,32 @@ Skills: JAVA, Spring Boot, JDBC, H2, JUnit, MySQL, REST API, intelliJ IDEA
 ![ecommercebackendapi drawio](https://user-images.githubusercontent.com/78866239/235349955-0e1789a8-1d58-45da-83dc-378f37daabb0.png)
 
 
-## General flow 
-(1.	Get the request from the client and variables from the request body  
-(2.	Set the variables to dto (stores necessary variables for dao(SQL))  
-(3.	Pass dto to Service  
-&nbsp;&nbsp;In Service, It may have some business logic (conditional expression, calculation, check etc.)  
-(4.	Pass dto or other variables to dao  
-(5.	Dao implements the SQL execution     
-&nbsp;&nbsp;If it returns multiple rows then use rowmapper to turn Result into model.object    
-&nbsp;&nbsp;Then pass to namedParameterJdbcTemplate and return the List  
-(6.	(if needed) Set the List to Page  
-(7.	Return ResponseEntity.status(HttpStatus.OK).body() to the Frontend  
+# General Flow
+
+1. **Receive Request:**
+   - Get the request from the client and extract the necessary variables from the request body.
+
+2. **Set Variables to DTO:**
+   - Map the extracted variables to a Data Transfer Object (DTO), which stores the necessary data for the DAO (SQL) operations.
+
+3. **Pass DTO to Service Layer:**
+   - Pass the DTO to the Service layer.
+   - In the Service layer, apply any required business logic, such as conditional expressions, calculations, or validations.
+
+4. **Pass Data to DAO:**
+   - Pass the DTO or other relevant variables to the DAO (Data Access Object).
+   - The DAO is responsible for executing SQL queries.
+
+5. **SQL Execution in DAO:**
+   - If the SQL query returns multiple rows, use a RowMapper to map the ResultSet to a model object.
+   - Then, pass the mapped result to the `namedParameterJdbcTemplate` and return the result as a List.
+
+6. **(Optional) Paginate Results:**
+   - If pagination is required, set the List into a `Page` object.
+
+7. **Return Response to Frontend:**
+   - Return the response to the frontend using `ResponseEntity.status(HttpStatus.OK).body()`, with the appropriate body content.
+
 
 ## Product
 - Query product lists
